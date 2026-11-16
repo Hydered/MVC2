@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication7.Models.ConsultationRequest>
+
+<h2>Таблица</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var request in Model)
+    {
+        <tr>
+            <td>@request.Id</td>
+            <td>@request.StudentName</td>
+            <td>@request.Date.ToString("dd.MM.yyyy")</td>
+            <td>@request.Status</td>
+            <td>
+                @Html.ActionLink("Детали", "Details", "Requests", new { id = request.Id }, null)
+                @Html.ActionLink("Редактировать", "Edit", "Requests", new { id = request.Id }, null)
+                @Html.ActionLink("Удалить", "Delete", "Requests", new { id = request.Id }, null)
+            </td>
+
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Создать новый запрос", "Create", "Requests")
